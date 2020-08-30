@@ -13,7 +13,7 @@ namespace MinskCompiler.CodeAnalysis
         OpenParenthesisToken,
         CloseParenthesisToken,
         
-        NumberExpression,
+        LiteralExpression,
         BinaryExpression,
         ParenthesizedExpression,
     }
