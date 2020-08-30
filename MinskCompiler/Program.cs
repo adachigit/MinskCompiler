@@ -5,11 +5,11 @@ using MinskCompiler.CodeAnalysis;
 
 namespace MinskCompiler
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            bool showTree = false;
+            var showTree = false;
 
             while(true)
             {
@@ -29,15 +29,13 @@ namespace MinskCompiler
                     continue;
                 }
 
-                SyntaxTree syntaxTree = SyntaxTree.Parse(line);
-
-                var color = Console.ForegroundColor;
+                var syntaxTree = SyntaxTree.Parse(line);
 
                 if(showTree)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrettyPrint(syntaxTree.Root);
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
 
                 if(syntaxTree.Diagnostics.Any())
@@ -47,7 +45,7 @@ namespace MinskCompiler
                     foreach(var diagnostic in syntaxTree.Diagnostics)
                         Console.WriteLine(diagnostic);
 
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
                 else
                 {
@@ -73,7 +71,7 @@ namespace MinskCompiler
 
             Console.WriteLine();
 
-            indent += isLast ? "    " : "│   ";
+            indent += isLast ? "   " : "│  ";
 
             var lastChild = node.GetChildren().LastOrDefault();
 
