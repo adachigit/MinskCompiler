@@ -23,5 +23,4 @@ namespace MinskCompiler.CodeAnalysis
             yield return Right;
         }
     }
-
 }
