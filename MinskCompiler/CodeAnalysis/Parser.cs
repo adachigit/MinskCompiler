@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace MinskCompiler.CodeAnalysis
 {
-    class Parser
+    internal sealed class Parser
     {
         private readonly SyntaxToken[] _tokens;
 
@@ -18,7 +18,7 @@ namespace MinskCompiler.CodeAnalysis
 
             do
             {
-                token = lexer.NextToken();
+                token = lexer.Lex();
 
                 if(token.Kind != SyntaxKind.WhitespaceToken &&
                    token.Kind != SyntaxKind.BadToken)
@@ -52,7 +52,7 @@ namespace MinskCompiler.CodeAnalysis
             return current;
         }
 
-        private SyntaxToken Match(SyntaxKind kind)
+        private SyntaxToken MatchToken(SyntaxKind kind)
         {
             if(Current.Kind == kind)
                 return NextToken();
@@ -64,8 +64,8 @@ namespace MinskCompiler.CodeAnalysis
 
         public SyntaxTree Parse()
         {
-            var expression = ParseTerm();
-            var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
+            var expression = ParseExpression();
+            var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
 
             return new SyntaxTree(_diagnostics, expression, endOfFileToken);
         }
@@ -111,13 +111,13 @@ namespace MinskCompiler.CodeAnalysis
             {
                 var left = NextToken();
                 var expression = ParseExpression();
-                var right = Match(SyntaxKind.CloseParenthesisToken);
+                var right = MatchToken(SyntaxKind.CloseParenthesisToken);
 
                 return new ParenthesizedExpressionSyntax(left, expression, right);
             }
 
-            var numberToken = Match(SyntaxKind.NumberToken);
-            return new NumberExpressionSyntax(numberToken);
+            var numberToken = MatchToken(SyntaxKind.NumberToken);
+            return new LiteralExpressionSyntax(numberToken);
         }
     }
 
