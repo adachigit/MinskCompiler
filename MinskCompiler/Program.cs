@@ -44,7 +44,7 @@ namespace MinskCompiler
                     Console.ResetColor();
                 }
 
-                if (!syntaxTree.Diagnostics.Any())
+                if (!diagnostics.Any())
                 {
                     var evaluator = new Evaluator(boundExpression);
                     Console.WriteLine($"Result is {evaluator.Evaluate()}");
@@ -53,7 +53,7 @@ namespace MinskCompiler
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
 
-                    foreach (var diagnostic in syntaxTree.Diagnostics)
+                    foreach (var diagnostic in diagnostics)
                         Console.WriteLine(diagnostic);
 
                     Console.ResetColor();
