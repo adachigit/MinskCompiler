@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using MinskCompiler.CodeAnalysis;
 using MinskCompiler.CodeAnalysis.Syntax;
+using MinskCompiler.CodeAnalysis.Binding;
 
 namespace MinskCompiler
 {
@@ -31,6 +32,10 @@ namespace MinskCompiler
                 }
 
                 var syntaxTree = SyntaxTree.Parse(line);
+                var binder = new Binder();
+                var boundExpression = binder.BindExpression(syntaxTree.Root);
+
+                var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
 
                 if(showTree)
                 {
@@ -39,19 +44,19 @@ namespace MinskCompiler
                     Console.ResetColor();
                 }
 
-                if(syntaxTree.Diagnostics.Any())
+                if (!syntaxTree.Diagnostics.Any())
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-
-                    foreach(var diagnostic in syntaxTree.Diagnostics)
-                        Console.WriteLine(diagnostic);
-
-                    Console.ResetColor();
+                    var evaluator = new Evaluator(boundExpression);
+                    Console.WriteLine($"Result is {evaluator.Evaluate()}");
                 }
                 else
                 {
-                    var evaluator = new Evaluator(syntaxTree.Root);
-                    Console.WriteLine($"Result is {evaluator.Evaluate()}");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+
+                    foreach (var diagnostic in syntaxTree.Diagnostics)
+                        Console.WriteLine(diagnostic);
+
+                    Console.ResetColor();
                 }
             }
         }

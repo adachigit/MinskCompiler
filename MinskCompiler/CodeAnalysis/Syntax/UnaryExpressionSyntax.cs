@@ -10,7 +10,7 @@ namespace MinskCompiler.CodeAnalysis.Syntax
             Operand = operand;
         }
 
-        public override SyntaxKind Kind => SyntaxKind.UnrayExpression;
+        public override SyntaxKind Kind => SyntaxKind.UnaryExpression;
         public SyntaxToken OperatorToken { get; }
         public ExpressionSyntax Operand { get; }
 
