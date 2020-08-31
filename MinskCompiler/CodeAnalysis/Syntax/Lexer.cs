@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Syntax
 {
     internal sealed class Lexer
     {

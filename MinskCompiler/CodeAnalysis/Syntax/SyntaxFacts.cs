@@ -1,4 +1,4 @@
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Syntax
 {
     internal static class SyntaxFacts
     {

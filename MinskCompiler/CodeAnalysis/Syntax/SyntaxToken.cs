@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Syntax
 {
     public sealed class SyntaxToken : SyntaxNode
     {

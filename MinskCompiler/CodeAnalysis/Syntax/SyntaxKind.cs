@@ -1,4 +1,4 @@
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Syntax
 {
     public enum SyntaxKind
     {

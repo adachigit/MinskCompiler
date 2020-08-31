@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Syntax
 {
     public sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
     {
