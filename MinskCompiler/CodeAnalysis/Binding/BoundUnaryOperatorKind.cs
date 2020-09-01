@@ -4,5 +4,6 @@ namespace MinskCompiler.CodeAnalysis.Binding
     {
         Identity,
         Negation,
+        LogicalNegation,
     }
 }
