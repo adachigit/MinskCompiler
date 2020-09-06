@@ -57,7 +57,7 @@ namespace MinskCompiler.CodeAnalysis.Binding
 
             if(null == boundOperator)
             {
-                _diagnostics.Add($"Unary operator {syntax.OperatorToken.Text} is not defined for types {boundLeft.Type} and {boundRight.Type}");
+                _diagnostics.Add($"Binary operator {syntax.OperatorToken.Text} is not defined for types {boundLeft.Type} and {boundRight.Type}");
                 return boundLeft;
             }
 
