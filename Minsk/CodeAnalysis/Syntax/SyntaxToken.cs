@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,6 +18,7 @@ namespace MinskCompiler.CodeAnalysis.Syntax
         public int Position { get; }
         public string Text { get; }
         public object Value { get; }
+        public TextSpan Span => new TextSpan(Position, Text.Length);
 
         public override IEnumerable<SyntaxNode> GetChildren()
         {

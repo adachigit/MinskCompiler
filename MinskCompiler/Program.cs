@@ -32,10 +32,10 @@ namespace MinskCompiler
                 }
 
                 var syntaxTree = SyntaxTree.Parse(line);
-                var binder = new Binder();
-                var boundExpression = binder.BindExpression(syntaxTree.Root);
+                var compliation = new Compilation(syntaxTree);
+                var result = compliation.Evaluate();
 
-                var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
+                var diagnostics = result.Diagnostics;
 
                 if(showTree)
                 {
@@ -46,8 +46,7 @@ namespace MinskCompiler
 
                 if (!diagnostics.Any())
                 {
-                    var evaluator = new Evaluator(boundExpression);
-                    Console.WriteLine($"Result is {evaluator.Evaluate()}");
+                    Console.WriteLine(result.Value);
                 }
                 else
                 {

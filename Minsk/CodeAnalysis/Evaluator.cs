@@ -1,10 +1,8 @@
 ﻿using System;
 using MinskCompiler.CodeAnalysis.Binding;
-using MinskCompiler.CodeAnalysis.Syntax;
 
 namespace MinskCompiler.CodeAnalysis
 {
-
     internal sealed class Evaluator
     {
         private readonly BoundExpression _root;
