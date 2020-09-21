@@ -11,6 +11,7 @@ namespace MinskCompiler.CodeAnalysis.Syntax
         MinusToken,
         StarToken,
         SlashToken,
+        EqualsToken,
         EqualsEqualsToken,
         BangEqualsToken,
         PipePipeToken,
@@ -26,9 +27,11 @@ namespace MinskCompiler.CodeAnalysis.Syntax
 
         // Expressions
         LiteralExpression,
+        NameExpression,
         BinaryExpression,
         ParenthesizedExpression,
         UnaryExpression,
+        AssignmentExpression,
     }
 
 }

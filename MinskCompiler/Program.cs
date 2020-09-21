@@ -12,6 +12,7 @@ namespace MinskCompiler
         private static void Main()
         {
             var showTree = false;
+            var variables = new Dictionary<string, object>();
 
             while(true)
             {
@@ -33,7 +34,7 @@ namespace MinskCompiler
 
                 var syntaxTree = SyntaxTree.Parse(line);
                 var compliation = new Compilation(syntaxTree);
-                var result = compliation.Evaluate();
+                var result = compliation.Evaluate(variables);
 
                 var diagnostics = result.Diagnostics;
 
