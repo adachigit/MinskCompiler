@@ -1,3 +1,5 @@
 ##ignore these files##
 bin
 obj
+.vs
+JSON
