@@ -80,13 +80,6 @@ public class LexerTest
     private static IEnumerable<(SyntaxKind kind, string text)> GetTokens()
     {
         return new[] {
-            // (SyntaxKind.WhitespaceToken, " "),
-            // (SyntaxKind.WhitespaceToken, "  "),
-            // (SyntaxKind.WhitespaceToken, "\r"),
-            // (SyntaxKind.WhitespaceToken, "\n"),
-            // (SyntaxKind.WhitespaceToken, "\r\n"),
-            // (SyntaxKind.WhitespaceToken, "\t"),
-
             (SyntaxKind.NumberToken, "1"),
             (SyntaxKind.NumberToken, "123"),
             (SyntaxKind.PlusToken, "+"),
