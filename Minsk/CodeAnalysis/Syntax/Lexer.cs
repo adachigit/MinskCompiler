@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MinskCompiler.CodeAnalysis.Text;
 
 namespace MinskCompiler.CodeAnalysis.Syntax
 {

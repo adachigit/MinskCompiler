@@ -1,3 +1,5 @@
+using MinskCompiler.CodeAnalysis.Text;
+
 namespace MinskCompiler.CodeAnalysis
 {
     public sealed class Diagnostic

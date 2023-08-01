@@ -1,6 +1,6 @@
 using System;
 
-namespace MinskCompiler.CodeAnalysis
+namespace MinskCompiler.CodeAnalysis.Text
 {
     public struct TextSpan
     {

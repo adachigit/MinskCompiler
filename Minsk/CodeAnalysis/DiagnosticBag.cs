@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using MinskCompiler.CodeAnalysis.Syntax;
+using MinskCompiler.CodeAnalysis.Text;
 
 namespace MinskCompiler.CodeAnalysis
 {
