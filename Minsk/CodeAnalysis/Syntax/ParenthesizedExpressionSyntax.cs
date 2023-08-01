@@ -16,13 +16,6 @@ namespace MinskCompiler.CodeAnalysis.Syntax
         public SyntaxToken CloseParenthesisToken { get; }
 
         public override SyntaxKind Kind => SyntaxKind.ParenthesizedExpression;
-
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return OpenParenthesisToken;
-            yield return Expression;
-            yield return CloseParenthesisToken;
-        }
     }
 
 }
