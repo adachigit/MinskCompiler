@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace MinskCompiler.CodeAnalysis.Syntax
@@ -7,6 +8,15 @@ namespace MinskCompiler.CodeAnalysis.Syntax
     {
         public abstract SyntaxKind Kind { get; }
 
+        public virtual TextSpan Span
+        {
+            get
+            {
+                var first = GetChildren().First().Span;
+                var end = GetChildren().Last().Span;
+                return TextSpan.FromBounds(first.Start, end.End);
+            }
+        }
         public IEnumerable<SyntaxNode> GetChildren()
         {
             var properties = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
