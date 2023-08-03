@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using MinskCompiler.CodeAnalysis.Text;
 
 namespace MinskCompiler.CodeAnalysis.Syntax
 {
     internal sealed class Parser
     {
         private readonly DiagnosticBag _diagnostics = new DiagnosticBag();
+        private readonly SourceText _text;
         private readonly ImmutableArray<SyntaxToken> _tokens;
-
         private int _position;
 
-        public Parser(string text)
+        public Parser(SourceText text)
         {
             var tokens = new List<SyntaxToken>();
 
@@ -28,6 +29,7 @@ namespace MinskCompiler.CodeAnalysis.Syntax
                 }
             } while(token.Kind != SyntaxKind.EndOfFileToken);
 
+            _text = text;
             _diagnostics.AddRange(lexer.Diagnostics);
             _tokens = tokens.ToImmutableArray();
         }
@@ -68,7 +70,7 @@ namespace MinskCompiler.CodeAnalysis.Syntax
             var expression = ParseExpression();
             var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
 
-            return new SyntaxTree(_diagnostics.ToImmutableArray(), expression, endOfFileToken);
+            return new SyntaxTree(_text, _diagnostics.ToImmutableArray(), expression, endOfFileToken);
         }
 
         private ExpressionSyntax ParseExpression()
