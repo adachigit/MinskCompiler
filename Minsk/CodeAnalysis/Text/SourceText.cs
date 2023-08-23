@@ -28,15 +28,18 @@ namespace MinskCompiler.CodeAnalysis.Text
             {
                 var index = lower + (upper - lower) / 2;
                 var start = Lines[index].Start;
-                var end = Lines[index].End;
 
-                if (position >= start && position < end)
+                if (position == start)
                     return index;
 
-                if (position > end)
-                    lower = index + 1;
-                else
+                if (start > position)
+                {
                     upper = index - 1;
+                }
+                else
+                {
+                    lower = index + 1;
+                }
             }
 
             return lower - 1;
